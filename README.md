@@ -59,3 +59,29 @@ print(D.mro()) # [D, B, C, A, object]
 This shows the order in which superclasses are searched when a method is called on an instance of class D.
 
 Overall, the MRO is a mechanism in Python that determines the order in which superclasses are searched when a method is called on a derived class. This allows Python to resolve ambiguities when multiple superclasses define the same method.
+
+## In python, how a for loop works under the hood?
+In Python, a for loop is a control flow statement that allows you to iterate over a sequence of values. When you write a for loop, you specify the sequence that you want to iterate over and a variable that will take on each value in the sequence in turn.
+
+Under the hood, a for loop works by calling the iter function on the sequence that you want to iterate over. This function returns an iterator, which is an object that implements the __iter__ and __next__ methods.
+
+The __iter__ method is called when the for loop is first executed. It returns the iterator object itself, allowing the for loop to access the iterator's __next__ method.
+
+The __next__ method is called repeatedly by the for loop to retrieve the next value in the sequence. When the end of the sequence is reached, the __next__ method raises a StopIteration exception, which signals to the for loop that it should terminate.
+
+For example, consider the following for loop:
+```python
+for i in range(10):
+    print(i)
+```
+
+Under the hood, this for loop works as follows:
+
+1. The range function is called, which returns a range object representing the sequence of numbers from 0 to 9.
+3. The iter function is called on the range object, which returns an iterator that allows the for loop to access the values in the range.
+3. The for loop calls the __iter__ method on the iterator, which returns the iterator object itself.
+4. The for loop calls the __next__ method on the iterator repeatedly to retrieve the next value in the sequence. On each iteration, the value is assigned to the i variable and the print statement is executed.
+5. When the end of the sequence is reached, the __next__ method raises a StopIteration exception, which causes the for loop to terminate.
+
+Overall, a for loop in Python works by calling the iter function on the sequence that you want to iterate over, which returns an iterator that allows the for loop to access the values in the sequence. The for loop then calls the __iter__ and __next__ methods on the iterator to retrieve the values and terminate when the end of the sequence is reached.
+
