@@ -115,3 +115,34 @@ When this code is executed, the following steps happen under the hood:
 1. The my_function function is defined.
 2. The my_decorator function is called and passed my_function as an argument.
 3. The my_decorator function
+
+## In python, what is an asynchronous generators, what is it for, what are the use cases?
+In Python, an asynchronous generator is a special type of generator that can be used to generate values asynchronously. Asynchronous generators allow you to use the yield keyword to return values from a generator function, but in an asynchronous context.
+
+To create an asynchronous generator, you define a generator function using the async def syntax. Inside the generator function, you can use the await keyword to suspend execution and wait for an asynchronous operation to complete. You can then use the yield keyword to return values from the generator, just as you would in a regular generator function.
+
+For example, consider the following asynchronous generator function:
+```python
+async def my_generator():
+    await asyncio.sleep(1)
+    yield 1
+    await asyncio.sleep(1)
+    yield 2
+```
+
+This generator function uses the asyncio.sleep function to pause execution for one second between each yield statement. This allows the generator to return values asynchronously, without blocking the main thread of execution.
+
+To iterate over the values produced by an asynchronous generator, you use the async for statement. This statement allows you to loop over the values produced by the generator, suspending execution and waiting for the next value to be available asynchronously.
+
+For example, you can use the following code to iterate over the values produced by
+
+Asynchronous generators are useful in a variety of situations where you need to generate values asynchronously. Some common use cases for asynchronous generators include:
+
+1. Stream processing: Asynchronous generators can be used to process streams of data, such as a stream of incoming network packets or a stream of events from a user interface. Because asynchronous generators allow you to yield values asynchronously, you can use them to process streams of data without blocking the main thread of execution.
+
+2. Asynchronous iteration: Asynchronous generators can be used to implement asynchronous iterators, which are iterators that can be used in an asynchronous context. This allows you to use the async for statement to iterate over a sequence of values asynchronously, without blocking the main thread of execution.
+
+3. Asynchronous data pipelines: Asynchronous generators can be used to build asynchronous data pipelines, where data flows through a series of stages, each of which processes the data asynchronously. This allows you to process data efficiently and asynchronously, without blocking the main thread of execution.
+
+Overall, asynchronous generators are a useful tool for implementing asynchronous iterators and data pipelines, and for processing streams of data asynchronously.
+
