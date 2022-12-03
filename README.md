@@ -85,3 +85,33 @@ Under the hood, this for loop works as follows:
 
 Overall, a for loop in Python works by calling the iter function on the sequence that you want to iterate over, which returns an iterator that allows the for loop to access the values in the sequence. The for loop then calls the __iter__ and __next__ methods on the iterator to retrieve the values and terminate when the end of the sequence is reached.
 
+## In python, what is a decorator and how does it work under the hood?
+In Python, a decorator is a design pattern that allows you to modify the behavior of a function or class without changing its code. Decorators are implemented using a special syntax in Python, which allows you to apply a function to another function or class in a way that is syntactically similar to calling a function.
+
+Under the hood, a decorator is a function that takes another function or class as an argument and returns a modified version of that function or class. When you apply a decorator to a function or class using the special syntax, the decorator is called and passed the original function or class as an argument. The decorator then returns a modified version of the function or class, which is then used in place of the original function or class.
+
+For example, consider the following decorator:
+```python
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        print("Before the function is called.")
+        result = func(*args, **kwargs)
+        print("After the function is called.")
+        return result
+    return wrapper
+```
+
+This decorator takes a function as an argument and returns a new function that wraps the original function. The wrapper function adds some additional behavior before and after the original function is called.
+
+To use this decorator, you apply it to a function using the @ symbol, like this:
+```python
+@my_decorator
+def my_function(x, y):
+    return x + y
+```
+
+When this code is executed, the following steps happen under the hood:
+
+1. The my_function function is defined.
+2. The my_decorator function is called and passed my_function as an argument.
+3. The my_decorator function
